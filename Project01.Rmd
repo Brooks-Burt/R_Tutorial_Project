@@ -54,7 +54,7 @@ Each group should use an *Acknowledgements* section to document the participatio
 Additional credit will be awarded for providing assistance to other groups and for the development of a tutorial that goes beyond the minimal expectations listed above.
 
 
-##Example of what R can do.
+##Example of what R can do. ( Sierra add excel and JMP graph - do not touch)
 Include a very nicely made graph, very colorful, etc... 
 
 Maybe compare it to a not-so nicely made graph? Show off the perks of utilizing R for data visualization.
