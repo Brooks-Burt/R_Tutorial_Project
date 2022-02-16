@@ -28,10 +28,10 @@ Examples could be one of the new core Biology classes, another 300-level course 
 You will work with the same groups as for the Homework 2 Peer review. 
 
 ```{r}
-PeerGroups1 <- read_csv("../00-Syllabus/PeerGroups1.csv")
-PeerGroups1 %>% 
-  select(-MAJR, -CLAS, ) %>%
-  print()
+Data <- read_csv("Obesity.csv")
+#PeerGroups1 %>% 
+  #select(-MAJR, -CLAS, ) %>%
+  #print()
 ```
 
 ## Grading
