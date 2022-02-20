@@ -10,6 +10,9 @@ date: 9 Feb 2022
 # Load other packages here.
 if (!require("datasauRus")) install.packages("datasauRus"); library(datasauRus)
 if (!require("tidyverse")) install.packages("tidyverse"); library(tidyverse)
+if (!require("readbitmap")) install.packages("readbitmap"); library(readbitmap)
+if (!require("imager")) install.packages("imager"); library(imager)
+if (!require("cowplot")) install.packages("cowplot"); library(cowplot)
 ```
 
 This project will require you to develop a tutorial to teach Bucknell students how to use R for graphing and data analysis. 
@@ -55,11 +58,53 @@ Each group should use an *Acknowledgements* section to document the participatio
 Additional credit will be awarded for providing assistance to other groups and for the development of a tutorial that goes beyond the minimal expectations listed above.
 
 
-##Example of what R can do. ( Sierra add excel and JMP graph - do not touch)
-Include a very nicely made graph, very colorful, etc... 
+##Example of what R can do. (Sierra)
 
-Maybe compare it to a not-so nicely made graph? Show off the perks of utilizing R for data visualization.
+One major benefit of R is that it's all "all-in-one" program, meaning once your data is uploaded you can complete all your tasks (data wrangling, editing, visualization, statistical analyses, and professional figures) within that program.
+Whereas, other programs such as Excel or JMP can complete one or two of these tasks but its much more clunky and some tasks are just not possible. 
 
+For example: 
+We have 3 figures here made on three different programs
+-Excel
+-JMP Pro 16
+-RStudio
+
+##Example Figure 1 using Excel
+```{r}
+library("jpeg")
+Excel <- readJPEG("ExcelGraph.jpg",native=TRUE)
+plot(0:1,0:1,type="n",ann=FALSE,axes=FALSE)
+rasterImage(Excel,0,0,1,1)
+
+#Code source: https://stackoverflow.com/questions/23861000/displaying-images-in-r-in-version-3-1-0
+```
+This is about as fancy as you can get for a figure using Excel and although it's not too bad, Excel can get clunky trying to work with data. Additionallly, we can't run statistacal analyses using Excel.
+
+##Example Figure 2 using JMP pro 16
+```{r}
+
+library(imager)
+JMP<-load.image("JMPproGraph.jpeg")
+plot(JMP)
+
+#Code source: https://stackoverflow.com/questions/23861000/displaying-images-in-r-in-version-3-1-0
+```
+Example 2 is from a statistical analysis program called JMP ("Jump"). The function pictured is called "Graph Builder" and it's a great way to visualize data before running an analysis. However, there is no way to make a nice professional figure in JMP. The figure pictured is as fancy as you can make a graph in JMP and you can't label axes or export this as an jpeg. In this case, it's kind of opposite of Excel: you can wrangle data and run analyses on it, but can't make figures.
+
+##Example Figure 3 using RStudio
+```{r}
+
+Fig3<-ggplot(Data) +
+  aes(x = WS, y= Selection.Time) +
+  geom_boxplot() +
+  geom_jitter(width=.15, aes(color= WS)) +
+  ggtitle("Obesity vs Reaction Time ")
+  theme_cowplot() +
+  theme(axis.text.x = element_text(angle = 0, vjust = 1, hjust=0.5))
+
+
+#Code source: 
+```
 ##Introduction
 
 Introduce what is R. Why it can be useful.
