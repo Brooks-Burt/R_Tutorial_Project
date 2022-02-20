@@ -105,7 +105,7 @@ Fig3<-ggplot(Data) +
   Fig3
 
 
-#Code source: 
+#Code source: Ashley
 ```
 ##Introduction
 
@@ -127,12 +127,14 @@ summary(Data)
 
 
 
-#hypothesis creation, question asking
-Residual effects of being overweight interfere with parietal lobe functions
+##Question and Hypothesis Creation
+Now that we know what the data looks like, it's time to ask some questions, create a hypothesis, and relevant predictions. 
+**Question:** *Is health related to cognitive ability?*
 
+**Hypothesis:** *Residual effects of being overweight interfere with mathematical skills*
 
-does obesity affect the ability to compelte arithmetic at a higher level?
--something along those lines
+**Prediction:** *People considered obese will take longer choosing an answer to an arithmetic problem*
+
 
 ##Graphing + a Statistical test
 get the data into a readable graph
@@ -140,15 +142,36 @@ perform a statistical test and conclude presentation with some sort of statement
 
 
 
+Lets look more into selection time, a variable that tracks the average reaction time of choosing one of three solutions for a presented math problem. Reaction times were collected within a 1400ms window (1.4 seconds). We can graph this alongside the WS category, which is weight status and is either N-O for not obese, or O for obese. 
+
+Here we will use the ggplot package to enable us to graph and visualize the data. While this code may look overwhelming, much of it is for formatting and aesthetics. There are a few parts of this function that we would like to call your attention to:
+
+ggplot() - an imported package allowing for better data visualization
+
+aes() - aesthetics function, helps to set x and y axis to our specified variables from out data set. x = WS, andy y = Selection.Time. It is important to spell these exactly as they are seen in the data set. 
+
+geom_boxplot() - This function sets the type of graph we will be using. A boxplot is a great way to visualize data as it shows the range of the data, min, max, quartiles, and median. 
+
+geom_jitter() - This geometry function plots the individual data points on top of our boxplots which is a good idea as it can help the viewer see where the actual data points lie in relation to each other. 
 
 
+```{r}
+#set out graph equal to the variable firstGraph
+firstGraph<-ggplot(Data) +
+  aes(x = WS, y= Selection.Time) +
+  geom_boxplot() +
+  geom_jitter(width=.15, aes(color= WS)) +
+  ggtitle("Obesity vs Reaction Time ") +
+  theme_cowplot() +
+  theme(axis.text.x = element_text(angle = 0, vjust = 1, hjust=0.5))
+  
+#call our firstGraph variable which runs the creation and outputs the graph
+firstGraph
 
 
+#Code source: Ashley
 
-
-
-
-
+```
 
 
 
