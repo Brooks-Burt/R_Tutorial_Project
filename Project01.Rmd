@@ -113,10 +113,24 @@ Introduce what is R. Why it can be useful.
 
 What our dataset is. The measure of ability in arithmetic in obese vs non-obese individuals.
 
-##Load + View the data
+##View the data
 Maybe load it into a nicely formatted table to show all the data points
 
+Firstly, we need to familiarize ourselves with the data. The head() and tail() functions give us a snapshot of the data from the top and bottom of our data set. This is helpful to us because as of right now we aren't sure which variables we are working with!
+Here we can see that our data is divided by the participants ID, Age, Gender, BMI, WS (Weight Status), and Selection Time. We will also use summary() which provides even more information about each specific variable. Things like finding the min, max, median, etc... can quickly be performed utilizing this function.
+```{r}
+head(Data)
+tail(Data)
+summary(Data)
+```
+
+
+
+
 #hypothesis creation, question asking
+Residual effects of being overweight interfere with parietal lobe functions
+
+
 does obesity affect the ability to compelte arithmetic at a higher level?
 -something along those lines
 
