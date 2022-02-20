@@ -98,9 +98,11 @@ Fig3<-ggplot(Data) +
   aes(x = WS, y= Selection.Time) +
   geom_boxplot() +
   geom_jitter(width=.15, aes(color= WS)) +
-  ggtitle("Obesity vs Reaction Time ")
+  ggtitle("Obesity vs Reaction Time ") 
   theme_cowplot() +
   theme(axis.text.x = element_text(angle = 0, vjust = 1, hjust=0.5))
+  
+  Fig3
 
 
 #Code source: 
