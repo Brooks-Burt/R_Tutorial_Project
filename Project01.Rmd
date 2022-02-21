@@ -1,11 +1,20 @@
 ---
 title: "Group Project 1"
 subtitle: "Biology 368/664 Bucknell University"
-output: html_notebook
+output: github_document
 author: Prof. Ken Field
 date: 9 Feb 2022
 ---
+##Introduction
 
+Introduce what R is. Why it can be useful.
+
+What our dataset is. The measure of ability in arithmetic in obese vs non-obese individuals.
+
+##Getting Started
+Before we can do anything with a data set in R we need to complete some initial setup maintenance: 
+This includes 
+##Load packages
 ```{r Load Libraries, include=FALSE}
 # Load other packages here.
 if (!require("datasauRus")) install.packages("datasauRus"); library(datasauRus)
@@ -15,21 +24,11 @@ if (!require("imager")) install.packages("imager"); library(imager)
 if (!require("cowplot")) install.packages("cowplot"); library(cowplot)
 ```
 
-This project will require you to develop a tutorial to teach Bucknell students how to use R for graphing and data analysis. 
-
-## Target Audience
-
-Discuss with your group the target audience for the tutorial. 
-Examples could be one of the new core Biology classes, another 300-level course (not 364), or a research group. 
-
 ```{r echo=FALSE}
 
 ```
 
-## Groups
-
-You will work with the same groups as for the Homework 2 Peer review. 
-
+## Reading in our data 
 ```{r}
 Data <- read_csv("0besity .csv")
 
@@ -38,34 +37,7 @@ Data <- read_csv("0besity .csv")
   #print()
 ```
 
-## Grading
-
-Each student will be expected to complete the following tasks to earn 85% of the points available for this assignment (21/25).
-
-- Identify and obtain suitable dataset
-- Use a Github repository and version control to collaborate on the project
-- Spend 4-6 hours preparing, coding, and testing tutorial
-  + Data exploration
-  + Data visualization
-  + Hypothesis testing
-- Present tutorial in class
-- Provide public archive suitable for sharing to students/faculty
-
-Tutorials from previous classes can be viewed at our public github site: https://github.com/Bucknell-Biol364
-
-Each group should use an *Acknowledgements* section to document the participation of each member and the collaboration within and between groups.
-
-Additional credit will be awarded for providing assistance to other groups and for the development of a tutorial that goes beyond the minimal expectations listed above.
-
-
-##Introduction
-
-Introduce what is R. Why it can be useful.
-
-What our dataset is. The measure of ability in arithmetic in obese vs non-obese individuals.
-
 ##Why is R useful? - An example  
-
 One major benefit of R is that it's an "all-in-one" program, meaning once your data is uploaded you can complete all your tasks (data wrangling, editing, visualization, statistical analyses, and professional figures) within that program.
 Whereas, other programs such as Excel or JMP can complete one or two of these tasks but its much more clunky and some tasks are just not possible. 
 
