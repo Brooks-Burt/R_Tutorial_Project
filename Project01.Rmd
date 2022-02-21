@@ -105,7 +105,7 @@ Fig3<-ggplot(Data) +
   Fig3
 
 
-#Code source: Ashley
+#Code source: Ashley Borseth
 ```
 ##Introduction
 
@@ -182,6 +182,7 @@ Now that we have visualized the data and can see them side by side, we should ru
 #Is our data normally distributed?
 shapiro.test(Data$Selection.Time)
 
+hist(Data$Selection.Time, breaks = 8, xlab = "Selection Time (ms)", main = "Histogram of Selection Time", col = "light blue")
 ```
 With a p-value of .9336, we know our data is definitely distributed normally and can proceed with our t-test.
 
@@ -195,9 +196,7 @@ t.test(Data$Selection.Time ~ Data$WS, alternative = "two.sided", var.equal = FAL
 ##Significance, outcomes, etc...
 With a p-value of .8558, it seems there is no correlation between obesity and selection time. This means our initial prediction was incorrect and it appears obesity may have no affect on arithmetic skills.
 
+
+
 # Acknowledgements
 
-
-In the paper, Justin and George simulate a variety of datasets that the same summary statistics to the Datasaurus but have very different distributions. 
-
-This package also makes these datasets available for use as an advanced [Anscombe's Quartet](https://en.wikipedia.org/wiki/Anscombe%27s_quartet), available in R as `anscombe`.
