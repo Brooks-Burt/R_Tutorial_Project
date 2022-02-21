@@ -58,9 +58,15 @@ Each group should use an *Acknowledgements* section to document the participatio
 Additional credit will be awarded for providing assistance to other groups and for the development of a tutorial that goes beyond the minimal expectations listed above.
 
 
-##Example of what R can do. (Sierra)
+##Introduction
 
-One major benefit of R is that it's all "all-in-one" program, meaning once your data is uploaded you can complete all your tasks (data wrangling, editing, visualization, statistical analyses, and professional figures) within that program.
+Introduce what is R. Why it can be useful.
+
+What our dataset is. The measure of ability in arithmetic in obese vs non-obese individuals.
+
+##Why is R useful? - An example  
+
+One major benefit of R is that it's an "all-in-one" program, meaning once your data is uploaded you can complete all your tasks (data wrangling, editing, visualization, statistical analyses, and professional figures) within that program.
 Whereas, other programs such as Excel or JMP can complete one or two of these tasks but its much more clunky and some tasks are just not possible. 
 
 For example: 
@@ -69,29 +75,27 @@ We have 3 figures here made on three different programs
 -JMP Pro 16
 -RStudio
 
-##Example Figure 1 using Excel
+**Example Figure 1 using Excel:**
 ```{r}
 library("jpeg")
 Excel <- readJPEG("ExcelGraph.jpg",native=TRUE)
 plot(0:1,0:1,type="n",ann=FALSE,axes=FALSE)
 rasterImage(Excel,0,0,1,1)
 
-#Code source: https://stackoverflow.com/questions/23861000/displaying-images-in-r-in-version-3-1-0
 ```
-This is about as fancy as you can get for a figure using Excel and although it's not too bad, Excel can get clunky trying to work with data. Additionallly, we can't run statistacal analyses using Excel.
+This is about as fancy as you can get for a figure using Excel and although it's not too bad, Excel can get clunky trying to work with data. Additionally, we can't run statistical analyses using Excel.
 
-##Example Figure 2 using JMP pro 16
+**Example Figure 2 using JMP pro 16:**
 ```{r}
 
 library(imager)
 JMP<-load.image("JMPproGraph.jpeg")
 plot(JMP)
 
-#Code source: https://stackoverflow.com/questions/23861000/displaying-images-in-r-in-version-3-1-0
 ```
-Example 2 is from a statistical analysis program called JMP ("Jump"). The function pictured is called "Graph Builder" and it's a great way to visualize data before running an analysis. However, there is no way to make a nice professional figure in JMP. The figure pictured is as fancy as you can make a graph in JMP and you can't label axes or export this as an jpeg. In this case, it's kind of opposite of Excel: you can wrangle data and run analyses on it, but can't make figures.
+Example 2 is from a statistical analysis program called JMP ("Jump"). The function pictured is called "Graph Builder" and it's a great way to visualize data before running an analysis. However, there is no way to make a nice professional figure in JMP. The figure pictured is as fancy as you can make a figure in JMP and you can't label axes or export this as a jpeg. In this case, it's kind of opposite of Excel: you can wrangle data and run analyses on it, but can't make nice figures.
 
-##Example Figure 3 using RStudio
+**Example Figure 3 using RStudio:**
 ```{r}
 
 Fig3<-ggplot(Data) +
@@ -103,18 +107,9 @@ Fig3<-ggplot(Data) +
   theme(axis.text.x = element_text(angle = 0, vjust = 1, hjust=0.5))
   
   Fig3
-
-
-#Code source: Ashley Borseth
+  
 ```
-##Introduction
-
-Introduce what is R. Why it can be useful.
-
-What our dataset is. The measure of ability in arithmetic in obese vs non-obese individuals.
-
 ##View the data
-Maybe load it into a nicely formatted table to show all the data points
 
 Firstly, we need to familiarize ourselves with the data. The head() and tail() functions give us a snapshot of the data from the top and bottom of our data set. This is helpful to us because as of right now we aren't sure which variables we are working with!
 Here we can see that our data is divided by the participants ID, Age, Gender, BMI, WS (Weight Status), and Selection Time. We will also use summary() which provides even more information about each specific variable. Things like finding the min, max, median, etc... can quickly be performed utilizing this function.
@@ -124,10 +119,8 @@ tail(Data)
 summary(Data)
 ```
 
-
-
-
 ##Question and Hypothesis Creation
+
 Now that we know what the data looks like, it's time to ask some questions, create a hypothesis, and relevant predictions. 
 **Question:** *Is health related to cognitive ability?*
 
@@ -137,10 +130,9 @@ Now that we know what the data looks like, it's time to ask some questions, crea
 
 
 ##Visualize the Data!
-get the data into a readable graph
-perform a statistical test and conclude presentation with some sort of statement regarding the hypothesis
-
-
+Goals:
+- get the data into a readable graph
+- perform a statistical test and conclude presentation with some - sort of statement regarding the hypothesis
 
 Lets look more into selection time, a variable that tracks the average reaction time of choosing one of three solutions for a presented math problem. Reaction times were collected within a 1400ms window (1.4 seconds). We can graph this alongside the WS category, which is weight status and is either N-O for not obese, or O for obese. 
 
@@ -168,9 +160,6 @@ firstGraph<-ggplot(Data) +
 #call our firstGraph variable which runs the creation and outputs the graph
 firstGraph
 
-
-#Code source: Ashley
-
 ```
 
 
@@ -184,7 +173,7 @@ shapiro.test(Data$Selection.Time)
 
 hist(Data$Selection.Time, breaks = 8, xlab = "Selection Time (ms)", main = "Histogram of Selection Time", col = "light blue")
 ```
-With a p-value of .9336, we know our data is definitely distributed normally and can proceed with our t-test.
+With a p-value of .9336, we know our data is definitely normally distributed and we can proceed with our t-test.
 
 ```{r}
 
@@ -199,4 +188,6 @@ With a p-value of .8558, it seems there is no correlation between obesity and se
 
 
 # Acknowledgements
-
+Narrative - Brooks, Cassie, Sierra
+Coding - Brooks, Sierra (boxplot code: collaboration with Ashley Borseth; figure importing code: https://stackoverflow.com/questions/23861000/displaying-images-in-r-in-version-3-1-0)
+Question, Hypothesis, Predictions - Sierra, Brooks, Cassie
