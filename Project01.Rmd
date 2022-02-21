@@ -176,14 +176,14 @@ firstGraph
 
 ##Interpet the results
 
-Now that we have visualized the data and can see them side by side, we should run some statistical analyses to be able to tell whether or not our prediction was correct. 
+Now that we have visualized the data and can see them side by side, we should run some statistical analyses to be able to tell whether or not our prediction was correct. With one continuous variable being tested against a categorical variable, we can use a two sample t-test to determine if the two are significantly related to each other. In order to do this, we first must ensure our selection time's are distributed normally. We can use the shapiro test to test for normality, a p-value above .05 will ensure out data is distributed normally.
 
 ```{r}
 #Is our data normally distributed?
 shapiro.test(Data$Selection.Time)
 
 ```
-
+With a p-value of .9336, we know our data is definitely distributed normally and can proceed with our t-test.
 
 ```{r}
 
@@ -192,8 +192,8 @@ t.test(Data$Selection.Time ~ Data$WS, alternative = "two.sided", var.equal = FAL
 ```
 
 
-
-
+##Significance, outcomes, etc...
+With a p-value of .8558, it seems there is no correlation between obesity and selection time. This means our initial prediction was incorrect and it appears obesity may have no affect on arithmetic skills.
 
 # Acknowledgements
 
