@@ -6,14 +6,12 @@ author: Prof. Ken Field
 date: 9 Feb 2022
 ---
 ##Introduction
+Public health relies on communication between researchers, those that implement policies, and the public. By being able to visualize data that is understandable to multiple audiences is more effective in making change in communities. Choosing the right data visualization platform is half the battle. We suggest using R in order to effectively visualize data and perform necessary statistical analysis. R is an "all-in-one" program, meaning once your data is uploaded you can complete all your tasks (data wrangling and visualization, editing,  statistical analyses) within that program. 
 
-Introduce what R is. Why it can be useful.
-
-What our dataset is. The measure of ability in arithmetic in obese vs non-obese individuals.
+For this tutorial, we  will be using a data set from a research study testing arithmetic skills in non-obese and obese preteens. Each participant had a 1400 ms window to choose 1 of 3 solutions for a presented math problem. Participants answered a total of 240 math problems which we have averaged for all 62 participants to create the variable Selection.Time. 
 
 ##Getting Started
-Before we can do anything with a data set in R we need to complete some initial setup maintenance: 
-This includes 
+When first opening an RMD file, we have to load particular packages in order to do more with R. Like other programs, R has basic tools, but for advanced visualizations and to utilize extra features you need to  load files specific for your project. This includes  packages such as “tidy verse”, which you may be using often. This creates an easier workflow for data scientist by incorporating multiple packages into one. In this particular project we also utilized “readbitmap”, “imager” and “cowplot”.  
 ##Load packages
 ```{r Load Libraries, include=FALSE}
 # Load other packages here.
@@ -29,6 +27,7 @@ if (!require("cowplot")) install.packages("cowplot"); library(cowplot)
 ```
 
 ## Reading in our data 
+We begin by loading our data table into R.
 ```{r}
 Data <- read_csv("0besity .csv")
 
@@ -38,14 +37,7 @@ Data <- read_csv("0besity .csv")
 ```
 
 ##Why is R useful? - An example  
-One major benefit of R is that it's an "all-in-one" program, meaning once your data is uploaded you can complete all your tasks (data wrangling, editing, visualization, statistical analyses, and professional figures) within that program.
-Whereas, other programs such as Excel or JMP can complete one or two of these tasks but its much more clunky and some tasks are just not possible. 
-
-For example: 
-We have 3 figures here made on three different programs
--Excel
--JMP Pro 16
--RStudio
+Other programs such as Excel or JMP can complete one or two of these tasks but it’s much more clunky and some tasks are just not possible. To highlight how R is different from other programs we have included some examples. 
 
 **Example Figure 1 using Excel:**
 ```{r}
@@ -67,6 +59,8 @@ plot(JMP)
 ```
 Example 2 is from a statistical analysis program called JMP ("Jump"). The function pictured is called "Graph Builder" and it's a great way to visualize data before running an analysis. However, there is no way to make a nice professional figure in JMP. The figure pictured is as fancy as you can make a figure in JMP and you can't label axes or export this as a jpeg. In this case, it's kind of opposite of Excel: you can wrangle data and run analyses on it, but can't make nice figures.
 
+As you can see, programs such as Excel and JMP are quite limited in the tools you can use to perform data analyses. Below we will be demonstrating how you can perform statistical and data visualization tasks in R. 
+
 **Example Figure 3 using RStudio:**
 ```{r}
 
@@ -83,40 +77,41 @@ Fig3<-ggplot(Data) +
 ```
 ##View the data
 
-Firstly, we need to familiarize ourselves with the data. The head() and tail() functions give us a snapshot of the data from the top and bottom of our data set. This is helpful to us because as of right now we aren't sure which variables we are working with!
-Here we can see that our data is divided by the participants ID, Age, Gender, BMI, WS (Weight Status), and Selection Time. We will also use summary() which provides even more information about each specific variable. Things like finding the min, max, median, etc... can quickly be performed utilizing this function.
+First we want to understand our data. We have to check for irregularities, missing values, or anything that would make our data invalid. Within the data set testing arithmetic skills in obese and non-obese preteens, the researchers provided us with a ton of data. We first organized the data file from 62 participants selecting variables such as gender, weight status (WS), selection time, age, and BMI. We choose these variables as they may explain correlational patterns that may be present after our statistical analysis. 
+
+We then  need to familiarize ourselves with the data. The head() and tail() functions give us a snapshot of the data from the top and bottom of our data set. Here we can see that our data is divided by the participants ID, Age, Gender, BMI, WS (Weight Status), and Selection Time. So, we have now confirmed our selected variables have been correctly loaded into R.  We will also use summary() which provides even more information about each specific variable. Things like finding the min, max, and median values can quickly be performed utilizing this function.
 ```{r}
 head(Data)
 tail(Data)
 summary(Data)
 ```
 
-##Question and Hypothesis Creation
+Being a good data scientist means that we  check our data looks similar to other resources and our questions are valid. In conjuction with multiple articles, we know that it is valid to test and question the correlation of obesity and one’s arithmetic skill level.  
 
-Now that we know what the data looks like, it's time to ask some questions, create a hypothesis, and relevant predictions. 
+Now that we know what the data looks like, it's time to ask some questions, create a hypothesis, and make relevant predictions. 
+
 **Question:** *Is health related to cognitive ability?*
 
 **Hypothesis:** *Residual effects of being overweight interfere with mathematical skills*
 
-**Prediction:** *People considered obese will take longer choosing an answer to an arithmetic problem*
-
+**Prediction:** *People considered obese will take longer when asked to solve problems on an arithmetic test.  *
 
 ##Visualize the Data!
-Goals:
-- get the data into a readable graph
-- perform a statistical test and conclude presentation with some - sort of statement regarding the hypothesis
 
-Lets look more into selection time, a variable that tracks the average reaction time of choosing one of three solutions for a presented math problem. Reaction times were collected within a 1400ms window (1.4 seconds). We can graph this alongside the WS category, which is weight status and is either N-O for not obese, or O for obese. 
+To answer our questions, disprove or prove our hypothesis, and test our predictions, we then have to organize the data in a readable graph and perform statistical analysis. Data is more useful when visualized and readable. 
 
+We first begin, by comparing obese and non-obese children and their reaction times. (Simple right?).  We choose to first analyze these two variables as it is somewhere broad and easy to start. 
+ We can then graph selection time (average time each participant took to answer) alongside the WS variable ( weight status-  either N-O for not obese, or O for obese). 
 Here we will use the ggplot package to enable us to graph and visualize the data. While this code may look overwhelming, much of it is for formatting and aesthetics. There are a few parts of this function that we would like to call your attention to:
 
-ggplot() - an imported package allowing for better data visualization
+            ggplot() - an imported package allowing for better data visualization
 
-aes() - aesthetics function, helps to set x and y axis to our specified variables from out data set. x = WS, andy y = Selection.Time. It is important to spell these exactly as they are seen in the data set. 
+          aes() - aesthetics function, helps to set x and y axis to our specified variables from out data set. For this particular graph, x           = WS, and  y = Selection.Time. It is important to spell these exactly as they are seen in the data set as R will not be able to c           all the variable if it cannot find it. 
 
-geom_boxplot() - This function sets the type of graph we will be using. A boxplot is a great way to visualize data as it shows the range of the data, min, max, quartiles, and median. 
+          geom_boxplot() - This function sets the type of graph we will be using. A boxplot is a great way to visualize data as it shows the          range of the data, min, max, quartiles, and median. In your own visualizations you can also utilize functions that create density            graphs, visualize error and an array of other graphical measures that suit your visualization purposes. These options can be found           online for tutorials specific to setting up gg_plot
 
-geom_jitter() - This geometry function plots the individual data points on top of our boxplots which is a good idea as it can help the viewer see where the actual data points lie in relation to each other. 
+          geom_jitter() - This geometry function plots the individual data points on top of our boxplots which is a good idea as it can help          the viewer see where the actual data points lie in relation to each other.
+
 
 
 ```{r}
@@ -137,7 +132,9 @@ firstGraph
 
 ##Interpet the results
 
-Now that we have visualized the data and can see them side by side, we should run some statistical analyses to be able to tell whether or not our prediction was correct. With one continuous variable being tested against a categorical variable, we can use a two sample t-test to determine if the two are significantly related to each other. In order to do this, we first must ensure our selection time's are distributed normally. We can use the shapiro test to test for normality, a p-value above .05 will ensure out data is distributed normally.
+Now that we have visualized the data and can see them side by side, we should run some statistical analyses to be able to tell whether or not our prediction was quantitively correct. 
+
+With one continuous variable being tested against a categorical variable, we can use a two-sample t-test to determine if the two are significantly related to each other. In order to do this, we first must ensure our selection times are distributed normally. We can use the shapiro test to test for normality, a p-value above .05 will ensure out data is distributed normally.
 
 ```{r}
 #Is our data normally distributed?
@@ -157,7 +154,16 @@ t.test(Data$Selection.Time ~ Data$WS, alternative = "two.sided", var.equal = FAL
 ##Significance, outcomes, etc...
 With a p-value of .8558, it seems there is no correlation between obesity and selection time. This means our initial prediction was incorrect and it appears obesity may have no affect on arithmetic skills.
 
+#Challenge your conclusions
+Challenge your conclusions. 
+Our results may be due to a myriad of reasons. For one we also understand societal and peer pressures that obese children face. Showing up academically may be hard for more obese preteens at such a sensitive period in life. We also have to understand the use of our data and its application to the real world. There may be covert factors affecting the data such as lifestyle, time spent studying, familial pressures, and individuals having a range of interests that lay outside of academics. From our conclusion we are now able to question other factors in low arithmetic skill level in preteens. 
 
+
+
+#Always remember to give credit to the data collectors and other authors: 
+
+
+Alatorre-Cruz, G.C., Downs, H., Hagood, D., Sorensen, S.T.,  Williams, D.K., Larson-Prior, L. (2022). Effect of obesity on arithmetic processing in preteens with high and low math skills. An event-related potentials study. Frontiers in Human Neurosciences, In press.\\
 
 # Acknowledgements
 Narrative - Brooks, Cassie, Sierra
