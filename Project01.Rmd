@@ -5,14 +5,14 @@ output: github_document
 author: Prof. Ken Field
 date: 9 Feb 2022
 ---
-##Introduction
+**Introduction**
 Public health relies on communication between researchers, those that implement policies, and the public. By being able to visualize data that is understandable to multiple audiences is more effective in making change in communities. Choosing the right data visualization platform is half the battle. We suggest using R in order to effectively visualize data and perform necessary statistical analysis. R is an "all-in-one" program, meaning once your data is uploaded you can complete all your tasks (data wrangling and visualization, editing,  statistical analyses) within that program. 
 
 For this tutorial, we  will be using a data set from a research study testing arithmetic skills in non-obese and obese preteens. Each participant had a 1400 ms window to choose 1 of 3 solutions for a presented math problem. Participants answered a total of 240 math problems which we have averaged for all 62 participants to create the variable Selection.Time. 
 
-##Getting Started
+**Getting Started**
 When first opening an RMD file, we have to load particular packages in order to do more with R. Like other programs, R has basic tools, but for advanced visualizations and to utilize extra features you need to  load files specific for your project. This includes  packages such as “tidy verse”, which you may be using often. This creates an easier workflow for data scientist by incorporating multiple packages into one. In this particular project we also utilized “readbitmap”, “imager” and “cowplot”.  
-##Load packages
+**Load packages**
 ```{r Load Libraries, include=FALSE}
 # Load other packages here.
 if (!require("datasauRus")) install.packages("datasauRus"); library(datasauRus)
@@ -26,7 +26,7 @@ if (!require("cowplot")) install.packages("cowplot"); library(cowplot)
 
 ```
 
-## Reading in our data 
+**Reading in our data**
 We begin by loading our data table into R.
 ```{r}
 Data <- read_csv("0besity .csv")
@@ -36,7 +36,7 @@ Data <- read_csv("0besity .csv")
   #print()
 ```
 
-##Why is R useful? - An example  
+**Why is R useful? - An example**
 Other programs such as Excel or JMP can complete one or two of these tasks but it’s much more clunky and some tasks are just not possible. To highlight how R is different from other programs we have included some examples. 
 
 **Example Figure 1 using Excel:**
@@ -75,7 +75,7 @@ Fig3<-ggplot(Data) +
   Fig3
   
 ```
-##View the data
+**View the data**
 
 First we want to understand our data. We have to check for irregularities, missing values, or anything that would make our data invalid. Within the data set testing arithmetic skills in obese and non-obese preteens, the researchers provided us with a ton of data. We first organized the data file from 62 participants selecting variables such as gender, weight status (WS), selection time, age, and BMI. We choose these variables as they may explain correlational patterns that may be present after our statistical analysis. 
 
@@ -96,7 +96,7 @@ Now that we know what the data looks like, it's time to ask some questions, crea
 
 **Prediction:** *People considered obese will take longer when asked to solve problems on an arithmetic test.  *
 
-##Visualize the Data!
+**Visualize the Data!**
 
 To answer our questions, disprove or prove our hypothesis, and test our predictions, we then have to organize the data in a readable graph and perform statistical analysis. Data is more useful when visualized and readable. 
 
@@ -130,7 +130,7 @@ firstGraph
 ```
 
 
-##Interpet the results
+**Interpet the results**
 
 Now that we have visualized the data and can see them side by side, we should run some statistical analyses to be able to tell whether or not our prediction was quantitively correct. 
 
@@ -151,10 +151,10 @@ t.test(Data$Selection.Time ~ Data$WS, alternative = "two.sided", var.equal = FAL
 ```
 
 
-##Significance, outcomes, etc...
+**Significance, outcomes, etc...**
 With a p-value of .8558, it seems there is no correlation between obesity and selection time. This means our initial prediction was incorrect and it appears obesity may have no affect on arithmetic skills.
 
-#Challenge your conclusions
+**Challenge your conclusions**
 Challenge your conclusions. 
 Our results may be due to a myriad of reasons. For one we also understand societal and peer pressures that obese children face. Showing up academically may be hard for more obese preteens at such a sensitive period in life. We also have to understand the use of our data and its application to the real world. There may be covert factors affecting the data such as lifestyle, time spent studying, familial pressures, and individuals having a range of interests that lay outside of academics. From our conclusion we are now able to question other factors in low arithmetic skill level in preteens. 
 
