@@ -53,7 +53,7 @@ This is about as fancy as you can get for a figure using Excel and although it's
 ```{r}
 
 library(imager)
-JMP<-load.image("JMPproGraph.jpeg")
+JMP<-load.image("JMPproGraph.png")
 plot(JMP)
 
 ```
@@ -86,7 +86,7 @@ tail(Data)
 summary(Data)
 ```
 
-Being a good data scientist means that we  check our data looks similar to other resources and our questions are valid. In conjuction with multiple articles, we know that it is valid to test and question the correlation of obesity and one’s arithmetic skill level.  
+Being a good data scientist means that we  check if our data looks similar to other resources and our questions are valid. In conjuction with multiple articles, we know that it is valid to test and question the correlation of obesity and one’s arithmetic skill level.  
 
 Now that we know what the data looks like, it's time to ask some questions, create a hypothesis, and make relevant predictions. 
 
@@ -168,4 +168,6 @@ Alatorre-Cruz, G.C., Downs, H., Hagood, D., Sorensen, S.T.,  Williams, D.K., Lar
 # Acknowledgements
 Narrative - Brooks, Cassie, Sierra
 Coding - Brooks, Sierra (boxplot code: collaboration with Ashley Borseth; figure importing code: https://stackoverflow.com/questions/23861000/displaying-images-in-r-in-version-3-1-0)
+
 Question, Hypothesis, Predictions - Sierra, Brooks, Cassie
+Finding dataset - Cassie
