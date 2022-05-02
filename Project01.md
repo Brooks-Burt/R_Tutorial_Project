@@ -1,6 +1,6 @@
 Group Project 1
 ================
-Prof. Ken Field
+Sierra Pete, Brooks Burt, Cassandra Brown
 9 Feb 2022
 
 **Introduction** Public health relies on communication between
@@ -27,7 +27,8 @@ features you need to load files specific for your project. This includes
 packages such as “tidy verse”, which you may be using often. This
 creates an easier workflow for data scientist by incorporating multiple
 packages into one. In this particular project we also utilized
-“readbitmap”, “imager” and “cowplot”.  
+“readbitmap”, “imager” and “cowplot”.
+
 **Load packages**
 
 **Reading in our data** We begin by loading our data table into R.
@@ -37,15 +38,13 @@ Data <- read_csv("0besity .csv")
 ```
 
     ## Rows: 62 Columns: 7
-
-    ## -- Column specification --------------------------------------------------------
+    ## ── Column specification ────────────────────────────────────────────────────────
     ## Delimiter: ","
     ## chr (4): participant_id, Gender, WS, Performance
     ## dbl (3): Age, BMI, Selection.Time
-
     ## 
-    ## i Use `spec()` to retrieve the full column specification for this data.
-    ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
 ``` r
 #PeerGroups1 %>% 
@@ -61,33 +60,28 @@ other programs we have included some examples.
 **Example Figure 1 using Excel:**
 
 ``` r
-library("jpeg")
-Excel <- readJPEG("ExcelGraph.jpg",native=TRUE)
-plot(0:1,0:1,type="n",ann=FALSE,axes=FALSE)
-rasterImage(Excel,0,0,1,1)
+knitr::include_graphics("ExcelGraph.jpg")
 ```
 
-![](Project01_files/figure-gfm/unnamed-chunk-3-1.png)<!-- --> This is
-about as fancy as you can get for a figure using Excel and although it’s
-not too bad, Excel can get clunky trying to work with data.
-Additionally, we can’t run statistical analyses using Excel.
+![](ExcelGraph.jpg)<!-- --> This is about as fancy as you can get for a
+figure using Excel and although it’s not too bad, Excel can get clunky
+trying to work with data. Additionally, we can’t run statistical
+analyses using Excel.
 
 **Example Figure 2 using JMP pro 16:**
 
 ``` r
-library(imager)
-JMP<-load.image("JMPproGraph.png")
-plot(JMP)
+knitr::include_graphics("JMPproGraph.png")
 ```
 
-![](Project01_files/figure-gfm/unnamed-chunk-4-1.png)<!-- --> Example 2
-is from a statistical analysis program called JMP (“Jump”). The function
-pictured is called “Graph Builder” and it’s a great way to visualize
-data before running an analysis. However, there is no way to make a nice
-professional figure in JMP. The figure pictured is as fancy as you can
-make a figure in JMP and you can’t label axes or export this as a jpeg.
-In this case, it’s kind of opposite of Excel: you can wrangle data and
-run analyses on it, but can’t make nice figures.
+![](JMPproGraph.png)<!-- --> Example 2 is from a statistical analysis
+program called JMP (“Jump”). The function pictured is called “Graph
+Builder” and it’s a great way to visualize data before running an
+analysis. However, there is no way to make a nice professional figure in
+JMP. The figure pictured is as fancy as you can make a figure in JMP and
+you can’t label axes or export this as a jpeg. In this case, it’s kind
+of opposite of Excel: you can wrangle data and run analyses on it, but
+can’t make nice figures.
 
 As you can see, programs such as Excel and JMP are quite limited in the
 tools you can use to perform data analyses. Below we will be
@@ -104,6 +98,396 @@ Fig3<-ggplot(Data) +
   ggtitle("Gender vs Reaction Time ") 
   theme_cowplot() +
   theme(axis.text.x = element_text(angle = 0, vjust = 1, hjust=0.5))
+```
+
+    ## List of 93
+    ##  $ line                      :List of 6
+    ##   ..$ colour       : chr "black"
+    ##   ..$ size         : num 0.5
+    ##   ..$ linetype     : num 1
+    ##   ..$ lineend      : chr "butt"
+    ##   ..$ arrow        : logi FALSE
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_line" "element"
+    ##  $ rect                      :List of 5
+    ##   ..$ fill         : logi NA
+    ##   ..$ colour       : logi NA
+    ##   ..$ size         : num 0.5
+    ##   ..$ linetype     : num 1
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_rect" "element"
+    ##  $ text                      :List of 11
+    ##   ..$ family       : chr ""
+    ##   ..$ face         : chr "plain"
+    ##   ..$ colour       : chr "black"
+    ##   ..$ size         : num 14
+    ##   ..$ hjust        : num 0.5
+    ##   ..$ vjust        : num 0.5
+    ##   ..$ angle        : num 0
+    ##   ..$ lineheight   : num 0.9
+    ##   ..$ margin       : 'margin' num [1:4] 0points 0points 0points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : logi FALSE
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ title                     : NULL
+    ##  $ aspect.ratio              : NULL
+    ##  $ axis.title                : NULL
+    ##  $ axis.title.x              :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : num 1
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 3.5points 0points 0points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.title.x.top          :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : num 0
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 0points 3.5points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.title.x.bottom       : NULL
+    ##  $ axis.title.y              :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : num 1
+    ##   ..$ angle        : num 90
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 3.5points 0points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.title.y.left         : NULL
+    ##  $ axis.title.y.right        :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : num 0
+    ##   ..$ angle        : num -90
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 0points 0points 3.5points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.text                 :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : chr "black"
+    ##   ..$ size         : num 12
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : NULL
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.text.x               :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : num 0.5
+    ##   ..$ vjust        : num 1
+    ##   ..$ angle        : num 0
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 3points 0points 0points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi FALSE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.text.x.top           :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : num 0
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 0points 3points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.text.x.bottom        : NULL
+    ##  $ axis.text.y               :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : num 1
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 3points 0points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.text.y.left          : NULL
+    ##  $ axis.text.y.right         :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : num 0
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 0points 0points 3points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.ticks                :List of 6
+    ##   ..$ colour       : chr "black"
+    ##   ..$ size         : num 0.5
+    ##   ..$ linetype     : NULL
+    ##   ..$ lineend      : NULL
+    ##   ..$ arrow        : logi FALSE
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_line" "element"
+    ##  $ axis.ticks.x              : NULL
+    ##  $ axis.ticks.x.top          : NULL
+    ##  $ axis.ticks.x.bottom       : NULL
+    ##  $ axis.ticks.y              : NULL
+    ##  $ axis.ticks.y.left         : NULL
+    ##  $ axis.ticks.y.right        : NULL
+    ##  $ axis.ticks.length         : 'simpleUnit' num 3.5points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ axis.ticks.length.x       : NULL
+    ##  $ axis.ticks.length.x.top   : NULL
+    ##  $ axis.ticks.length.x.bottom: NULL
+    ##  $ axis.ticks.length.y       : NULL
+    ##  $ axis.ticks.length.y.left  : NULL
+    ##  $ axis.ticks.length.y.right : NULL
+    ##  $ axis.line                 :List of 6
+    ##   ..$ colour       : chr "black"
+    ##   ..$ size         : num 0.5
+    ##   ..$ linetype     : NULL
+    ##   ..$ lineend      : chr "square"
+    ##   ..$ arrow        : logi FALSE
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_line" "element"
+    ##  $ axis.line.x               : NULL
+    ##  $ axis.line.x.top           : NULL
+    ##  $ axis.line.x.bottom        : NULL
+    ##  $ axis.line.y               : NULL
+    ##  $ axis.line.y.left          : NULL
+    ##  $ axis.line.y.right         : NULL
+    ##  $ legend.background         : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ legend.margin             : 'margin' num [1:4] 0points 0points 0points 0points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ legend.spacing            : 'simpleUnit' num 14points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ legend.spacing.x          : NULL
+    ##  $ legend.spacing.y          : NULL
+    ##  $ legend.key                : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ legend.key.size           : 'simpleUnit' num 15.4points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ legend.key.height         : NULL
+    ##  $ legend.key.width          : NULL
+    ##  $ legend.text               :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : 'rel' num 0.857
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : NULL
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ legend.text.align         : NULL
+    ##  $ legend.title              :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : num 0
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : NULL
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ legend.title.align        : NULL
+    ##  $ legend.position           : chr "right"
+    ##  $ legend.direction          : NULL
+    ##  $ legend.justification      : chr [1:2] "left" "center"
+    ##  $ legend.box                : NULL
+    ##  $ legend.box.just           : NULL
+    ##  $ legend.box.margin         : 'margin' num [1:4] 0points 0points 0points 0points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ legend.box.background     : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ legend.box.spacing        : 'simpleUnit' num 14points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ panel.background          : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ panel.border              : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ panel.spacing             : 'simpleUnit' num 7points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ panel.spacing.x           : NULL
+    ##  $ panel.spacing.y           : NULL
+    ##  $ panel.grid                : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ panel.grid.major          : NULL
+    ##  $ panel.grid.minor          : NULL
+    ##  $ panel.grid.major.x        : NULL
+    ##  $ panel.grid.major.y        : NULL
+    ##  $ panel.grid.minor.x        : NULL
+    ##  $ panel.grid.minor.y        : NULL
+    ##  $ panel.ontop               : logi FALSE
+    ##  $ plot.background           : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ plot.title                :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : chr "bold"
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : 'rel' num 1.14
+    ##   ..$ hjust        : num 0
+    ##   ..$ vjust        : num 1
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 0points 7points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ plot.title.position       : chr "panel"
+    ##  $ plot.subtitle             :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : 'rel' num 0.857
+    ##   ..$ hjust        : num 0
+    ##   ..$ vjust        : num 1
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 0points 7points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ plot.caption              :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : 'rel' num 0.786
+    ##   ..$ hjust        : num 1
+    ##   ..$ vjust        : num 1
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 7points 0points 0points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ plot.caption.position     : chr "panel"
+    ##  $ plot.tag                  :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : chr "bold"
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : num 0
+    ##   ..$ vjust        : num 0.7
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : NULL
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ plot.tag.position         : num [1:2] 0 1
+    ##  $ plot.margin               : 'margin' num [1:4] 7points 7points 7points 7points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ strip.background          :List of 5
+    ##   ..$ fill         : chr "grey80"
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ linetype     : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_rect" "element"
+    ##  $ strip.background.x        : NULL
+    ##  $ strip.background.y        : NULL
+    ##  $ strip.placement           : chr "inside"
+    ##  $ strip.text                :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : 'rel' num 0.857
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 3.5points 3.5points 3.5points 3.5points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ strip.text.x              : NULL
+    ##  $ strip.text.y              :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : num -90
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : NULL
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ strip.switch.pad.grid     : 'simpleUnit' num 3.5points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ strip.switch.pad.wrap     : 'simpleUnit' num 3.5points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ strip.text.y.left         :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : num 90
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : NULL
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  - attr(*, "class")= chr [1:2] "theme" "gg"
+    ##  - attr(*, "complete")= logi TRUE
+    ##  - attr(*, "validate")= logi TRUE
 
 ``` r
   Fig3
@@ -135,7 +519,7 @@ function.
 head(Data)
 ```
 
-    ## # A tibble: 6 x 7
+    ## # A tibble: 6 × 7
     ##   participant_id   Age Gender   BMI WS    Performance Selection.Time
     ##   <chr>          <dbl> <chr>  <dbl> <chr> <chr>                <dbl>
     ## 1 sub-01            10 M       16.0 N-O   H                     732.
@@ -149,7 +533,7 @@ head(Data)
 tail(Data)
 ```
 
-    ## # A tibble: 6 x 7
+    ## # A tibble: 6 × 7
     ##   participant_id   Age Gender   BMI WS    Performance Selection.Time
     ##   <chr>          <dbl> <chr>  <dbl> <chr> <chr>                <dbl>
     ## 1 sub-57             9 F       31.7 O     H                     595.
@@ -211,14 +595,13 @@ visualize the data. While this code may look overwhelming, much of it is
 for formatting and aesthetics. There are a few parts of this function
 that we would like to call your attention to:
 
-ggplot() - an imported package allowing for better data visualization
+            ggplot() - an imported package allowing for better data visualization
 
-aes() - aesthetics function, helps to set x and y axis to our specified variables from out data set. For this particular graph, x           = WS, and  y = Selection.Time. It is important to spell these exactly as they are seen in the data set as R will not be able to c           all the variable if it cannot find it. 
+          aes() - aesthetics function, helps to set x and y axis to our specified variables from out data set. For this particular graph, x           = WS, and  y = Selection.Time. It is important to spell these exactly as they are seen in the data set as R will not be able to c           all the variable if it cannot find it. 
 
+          geom_boxplot() - This function sets the type of graph we will be using. A boxplot is a great way to visualize data as it shows the          range of the data, min, max, quartiles, and median. In your own visualizations you can also utilize functions that create density            graphs, visualize error and an array of other graphical measures that suit your visualization purposes. These options can be found           online for tutorials specific to setting up gg_plot
 
-geom_boxplot() - This function sets the type of graph we will be using. A boxplot is a great way to visualize data as it shows the          range of the data, min, max, quartiles, and median. In your own visualizations you can also utilize functions that create density           graphs, visualize error and an array of other graphical measures that suit your visualization purposes. These options can be found          online for tutorials specific to setting up gg_plot.
-
-geom_jitter() - This geometry function plots the individual data points on top of our boxplots which is a good idea as it can help          the viewer see where the actual data points lie in relation to each other.
+          geom_jitter() - This geometry function plots the individual data points on top of our boxplots which is a good idea as it can help          the viewer see where the actual data points lie in relation to each other.
 
 ``` r
 #set out graph equal to the variable firstGraph
@@ -300,7 +683,7 @@ having a range of interests that lay outside of academics. From our
 conclusion we are now able to question other factors in low arithmetic
 skill level in preteens.
 
-#Always remember to give credit to the data collectors and other
+\#Always remember to give credit to the data collectors and other
 authors:
 
 Alatorre-Cruz, G.C., Downs, H., Hagood, D., Sorensen, S.T., Williams,

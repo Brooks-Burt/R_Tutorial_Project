@@ -2,7 +2,7 @@
 title: "Group Project 1"
 subtitle: "Biology 368/664 Bucknell University"
 output: github_document
-author: Prof. Ken Field
+author: Sierra Pete, Brooks Burt, Cassandra Brown
 date: 9 Feb 2022
 ---
 **Introduction**
@@ -11,14 +11,14 @@ Public health relies on communication between researchers, those that implement 
 For this tutorial, we  will be using a data set from a research study testing arithmetic skills in non-obese and obese preteens. Each participant had a 1400 ms window to choose 1 of 3 solutions for a presented math problem. Participants answered a total of 240 math problems which we have averaged for all 62 participants to create the variable Selection.Time. 
 
 **Getting Started**
-When first opening an RMD file, we have to load particular packages in order to do more with R. Like other programs, R has basic tools, but for advanced visualizations and to utilize extra features you need to  load files specific for your project. This includes  packages such as “tidy verse”, which you may be using often. This creates an easier workflow for data scientist by incorporating multiple packages into one. In this particular project we also utilized “readbitmap”, “imager” and “cowplot”.  
+When first opening an RMD file, we have to load particular packages in order to do more with R. Like other programs, R has basic tools, but for advanced visualizations and to utilize extra features you need to  load files specific for your project. This includes  packages such as “tidy verse”, which you may be using often. This creates an easier workflow for data scientist by incorporating multiple packages into one. In this particular project we also utilized “readbitmap”, “imager” and “cowplot”.
+
 **Load packages**
 ```{r Load Libraries, include=FALSE}
 # Load other packages here.
 if (!require("datasauRus")) install.packages("datasauRus"); library(datasauRus)
 if (!require("tidyverse")) install.packages("tidyverse"); library(tidyverse)
 if (!require("readbitmap")) install.packages("readbitmap"); library(readbitmap)
-if (!require("imager")) install.packages("imager"); library(imager)
 if (!require("cowplot")) install.packages("cowplot"); library(cowplot)
 ```
 
@@ -41,10 +41,9 @@ Other programs such as Excel or JMP can complete one or two of these tasks but i
 
 **Example Figure 1 using Excel:**
 ```{r}
-library("jpeg")
-Excel <- readJPEG("ExcelGraph.jpg",native=TRUE)
-plot(0:1,0:1,type="n",ann=FALSE,axes=FALSE)
-rasterImage(Excel,0,0,1,1)
+
+knitr::include_graphics("ExcelGraph.jpg")
+
 
 ```
 This is about as fancy as you can get for a figure using Excel and although it's not too bad, Excel can get clunky trying to work with data. Additionally, we can't run statistical analyses using Excel.
@@ -52,9 +51,7 @@ This is about as fancy as you can get for a figure using Excel and although it's
 **Example Figure 2 using JMP pro 16:**
 ```{r}
 
-library(imager)
-JMP<-load.image("JMPproGraph.png")
-plot(JMP)
+knitr::include_graphics("JMPproGraph.png")
 
 ```
 Example 2 is from a statistical analysis program called JMP ("Jump"). The function pictured is called "Graph Builder" and it's a great way to visualize data before running an analysis. However, there is no way to make a nice professional figure in JMP. The figure pictured is as fancy as you can make a figure in JMP and you can't label axes or export this as a jpeg. In this case, it's kind of opposite of Excel: you can wrangle data and run analyses on it, but can't make nice figures.
